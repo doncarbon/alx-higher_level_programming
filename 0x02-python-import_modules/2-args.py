@@ -11,4 +11,4 @@ else:
     print("{} arguments:".format(i))
 
 for idx in range(i):
-    print("{}: {}".format(i + 1, argv[i + 1]))
+    print("{}: {}".format(idx + 1, argv[idx + 1]))
