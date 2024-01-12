@@ -12,26 +12,19 @@ def roman_to_int(roman_string):
         for key, value in values.items():
             if letters[i] == key:
                 num.append(values[key])
-    if len(num) == 1:
-        total = num[0]
-    elif len(num) == 2:
-        if num[0] > num[1]:
-            total = num[0] + num[1]
-        else:
-            total = abs(num[0] - num[1])
-    else:
-        num.reverse()
-        for idx in range(len(num)):
-            if idx == 0:
+
+    num.reverse()
+    for idx in range(len(num)):
+        if idx == 0:
+            total += num[idx]
+        elif 0 < idx < len(num):
+            if num[idx] < num[idx - 1]:
+                total -= num[idx]
+            else:
                 total += num[idx]
-            elif 0 < idx < len(num):
-                if num[idx] < num[idx - 1]:
-                    total -= num[idx]
-                else:
-                    total += num[idx]
-#            for idx2 in range(1, len(num)):
-#                if num[idx] > num[idx2]:
-#                   cnv += num[idx] + num[idx2]
-#                else:
-#                    cnv += num[idx] - num[idx2]
+    #            for idx2 in range(1, len(num)):
+    #                if num[idx] > num[idx2]:
+    #                   cnv += num[idx] + num[idx2]
+    #                else:
+    #                    cnv += num[idx] - num[idx2]
     return total
