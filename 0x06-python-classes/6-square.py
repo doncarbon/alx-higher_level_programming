@@ -34,7 +34,7 @@ class Square:
                 not all(num >= 0 for num in value)):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
-            self.__position = tuple(value)
+            self.__position = value
 
     @property
     def size(self):
@@ -63,6 +63,8 @@ class Square:
         """Print the square with the # character."""
         if self.__size == 0:
             print("")
+            return
+
         for i in range(0, self.__position[1]):
             print("")
 
