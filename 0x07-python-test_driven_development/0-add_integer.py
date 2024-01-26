@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Defines an add_integer function."""
 
 
