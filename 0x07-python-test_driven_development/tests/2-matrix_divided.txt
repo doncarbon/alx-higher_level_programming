@@ -1,0 +1,36 @@
+`2-matrix_divided`` module
+======================
+
+Importing the module
+
+::
+
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+
+Using ``matrix_divided``
+-------------------
+
+``matrix_divided(matrix, div)`` returns a new matrix with All elements of the ``matrix`` should be
+divided by ``div``, rounded to 2 decimal places.
+
+::
+
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+    >>> print(matrix_divided(matrix, 3))
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+It can't work if the ``div`` is not a number or if it is equal to 0.
+
+::
+
+    >>> print(matrix_divided(matrix, 0))
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
+
+    >>> print(matrix_divided(matrix, "string"))
+    Traceback (most recent call last):
+    TypeError: div must be a number
