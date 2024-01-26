@@ -13,3 +13,7 @@ try:
     print(add_integer(None))
 except Exception as e:
     print(e)
+
+print(add_integer(100.3))
+#print(add_integer("School"))
+print(add_integer((1, 2, 4), 5))

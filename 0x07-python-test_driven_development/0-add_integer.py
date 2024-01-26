@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# doctest_0_add_integer.py
 def add_integer(a, b=98):
     """Function that adds 2 integers."""
     if not isinstance(a, (int, float)):
