@@ -33,4 +33,4 @@ def text_indentation(text):
 
     new_text = ''.join(text_list)
 
-    print(new_text)
+    print(new_text, end="")
