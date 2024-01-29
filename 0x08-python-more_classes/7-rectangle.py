@@ -25,7 +25,7 @@ class Rectangle:
         self.__height = height
 
     def __del__(self):
-        """Prints (Bye rectangle...) when an instance gets deleted."""
+        """Prints Bye rectangle when an instance gets deleted."""
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
 
