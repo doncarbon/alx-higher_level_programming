@@ -59,3 +59,16 @@ class Rectangle:
         if self.__width == 0 or self.__height == 0:
             return 0
         return (self.__height + self.__width) * 2
+
+    def __str__(self):
+        """Print the rectangle with the character # ."""
+        if self.__width == 0 or self.__height == 0:
+            return ""
+
+        rectangle = []
+        for i in range(0, self.__height):
+            [rectangle.append("#") for j in range(0, self.__width)]
+            if i != self.__height - 1:
+                rectangle.append("\n")
+
+        return "".join(rectangle)
