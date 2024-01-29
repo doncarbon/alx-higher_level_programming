@@ -4,6 +4,7 @@
 
 class Rectangle:
     """Rectangle Class"""
+
     def __init__(self, width=0, height=0):
         """Initialization of a new Square.
 
@@ -11,8 +12,8 @@ class Rectangle:
             width (int): The width of the new rectangle.
             height (int): The height of the new rectangle.
         """
-        self.__height = height
         self.__width = width
+        self.__height = height
 
     @property
     def width(self):
@@ -28,7 +29,7 @@ class Rectangle:
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
 
@@ -46,7 +47,7 @@ class Rectangle:
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
 
@@ -58,7 +59,7 @@ class Rectangle:
         """Return the rectangle perimeter."""
         if self.__width == 0 or self.__height == 0:
             return 0
-        return (self.__height + self.__width) * 2
+        return (self.__height * 2) + (self.__width * 2)
 
     def __str__(self):
         """Print the rectangle with the character # ."""
@@ -66,9 +67,8 @@ class Rectangle:
             return ""
 
         rectangle = []
-        for i in range(0, self.__height):
-            [rectangle.append("#") for j in range(0, self.__width)]
+        for i in range(self.__height):
+            [rectangle.append("#") for j in range(self.__width)]
             if i != self.__height - 1:
                 rectangle.append("\n")
-
         return "".join(rectangle)
