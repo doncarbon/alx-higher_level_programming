@@ -12,7 +12,8 @@ def is_kind_of_class(obj, a_class):
         a_class (type): The class to match the type of obj to.
     Returns:
         If yes - True
-        Otherwise - False"""
+        Otherwise - False
+    """
     if isinstance(obj, a_class):
         return True
     return False
