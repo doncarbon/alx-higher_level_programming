@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""Defines an Empty BaseGeometry Class."""
+"""Defines an BaseGeometry Class."""
 
 
-class BaseGeometry():
+class BaseGeometry:
     """BaseGeometry class."""
     def __init__(self):
         """Empty initialization"""

@@ -1,28 +1,26 @@
-Checking for module docstring:
-    >>> MyListM = __import__("1-my_list").__doc__
-    >>> len(MyListM) > 1
-    True
+``1-my_list`` module
+======================
 
-Checking for class docstring:
-    >>> MyListC = __import__("1-my_list").MyList.__doc__
-    >>> len(MyListC) > 1
-    True
+```my_list.print_sorted()``` should print the list, but sorted (ascending sort)
 
-Checking for method docstring:
-    >>> MyListMe = __import__("1-my_list").MyList.print_sorted.__doc__
-    >>> len(MyListMe) > 1
-    True
 
-Checking that MyList inherits from list:
+Importing my_list class:
+
+    >>> MyList = __import__("1-my_list").MyList
+
+
+Test Cases
+-------------------
+
+::
+
     >>> issubclass(MyList, list)
     True
 
-Checking for empty list:
     >>> l = MyList()
     >>> l.print_sorted()
     []
 
-Checking that appending works:
 	>>> l.append(1)
 	>>> l.append(2)
 	>>> l.append(3)
@@ -30,11 +28,9 @@ Checking that appending works:
 	>>> print(l)
 	[1, 2, 3, 4]
 
-Checking for list already in correct order:
 	>>> l.print_sorted()
 	[1, 2, 3, 4]
 
-Checking for one negative number:
 	>>> l.append(-1)
     >>> l.append(5)
     >>> print(l)
@@ -42,7 +38,6 @@ Checking for one negative number:
     >>> l.print_sorted()
     [-1, 1, 2, 3, 4, 5]
 
-Checking for too many arguments:
     >>> l.print_sorted(51)
     Traceback (most recent call last):
     ...
