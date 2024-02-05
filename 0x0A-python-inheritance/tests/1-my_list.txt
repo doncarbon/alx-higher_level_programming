@@ -42,3 +42,15 @@ Test Cases
     Traceback (most recent call last):
     ...
     TypeError: print_sorted() takes 1 positional argument but 2 were given
+
+    >>> l = MyList()
+    >>> l.append(4)
+    >>> l.append(3)
+    >>> l.append(2)
+    >>> l.append(1)
+    >>> print(l)
+    [4, 3, 2, 1]
+    >>> l.print_sorted()
+    [1, 2, 3, 4]
+    >>> print(l)
+    [4, 3, 2, 1]
