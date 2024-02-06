@@ -10,4 +10,6 @@ def read_file(filename=""):
         filename (str): the path to the file.
     """
     with open(filename, 'r', encoding="UTF8") as file:
-        print(file.read())
+        content = file.read()
+
+    print(content)
