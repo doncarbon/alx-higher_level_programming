@@ -9,5 +9,5 @@ def read_file(filename=""):
     Args:
         filename (str): the path to the file.
     """
-    with open(filename, encoding="UTF-8") as file:
+    with open(filename, 'r', encoding="UTF8") as file:
         print(file.read())
