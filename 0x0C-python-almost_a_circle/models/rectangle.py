@@ -21,10 +21,34 @@ class Rectangle(Base):
             id (int): the id attribute of a class.
         """
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+
+        if not isinstance(width, int):
+            raise TypeError("width must be an integer")
+        elif width <= 0:
+            raise ValueError("width must be > 0")
+        else:
+            self.__width = width
+
+        if not isinstance(height, int):
+            raise TypeError("height must be an integer")
+        elif height <= 0:
+            raise ValueError("height must be > 0")
+        else:
+            self.__height = height
+
+        if not isinstance(x, int):
+            raise TypeError("x must be an integer")
+        elif x < 0:
+            raise ValueError("x must be >= 0")
+        else:
+            self.__x = x
+
+        if not isinstance(y, int):
+            raise TypeError("y must be an integer")
+        elif y < 0:
+            raise ValueError("y must be >= 0")
+        else:
+            self.__y = y
 
     @property
     def width(self):
@@ -40,8 +64,8 @@ class Rectangle(Base):
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be >= 0")
+        elif value <= 0:
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -58,21 +82,21 @@ class Rectangle(Base):
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        elif value < 0:
-            raise ValueError("height must be >= 0")
+        elif value <= 0:
+            raise ValueError("height must be > 0")
         self.__height = value
 
     @property
     def x(self):
-        """Get/set the current height of the rectangle."""
+        """Get/set the current x pos of the rectangle."""
         return self.__x
 
     @x.setter
     def x(self, value):
-        """setting of a new height.
+        """setting of a new x.
 
         Args:
-            value (int): The value of the new height of the rectangle.
+            value (int): The value of the new x pos of the rectangle.
         """
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
@@ -82,18 +106,22 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """Get/set the current height of the rectangle."""
+        """Get/set the current y pos of the rectangle."""
         return self.__y
 
     @y.setter
     def y(self, value):
-        """setting of a new height.
+        """setting of a new y.
 
         Args:
-            value (int): The value of the new height of the rectangle.
+            value (int): The value of the new y pos of the rectangle.
         """
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         elif value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Return the current area of the rectangle."""
+        return self.__height * self.__width
