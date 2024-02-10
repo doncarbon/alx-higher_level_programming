@@ -126,11 +126,13 @@ class Rectangle(Base):
         """Return the current area of the rectangle."""
         return self.__height * self.__width
 
-    def display(self):
+    def display(self, *args):
         """
         Prints in stdout the Rectangle instance with the character #.
         """
+        [print() for pos in range(self.__y)]
         for i in range(0, self.__height):
+            print(self.__x * " ", end="")
             [print("#", end="") for j in range(self.__width)]
             print()
 
@@ -140,3 +142,26 @@ class Rectangle(Base):
         rect += ") " + str(self.__x) + "/" + str(self.__y) + " - "
         rect += str(self.__width) + "/" + str(self.__height)
         return rect
+
+    def update(self, *args):
+        """
+        Assigns an argument to each attribute.
+
+        Args:
+            *args (int): arguments to assign to attributes in order.
+        """
+        arg_list = []
+        for arg in args:
+            arg_list.append(arg)
+        if len(arg_list) != 0:
+            for i in range(len(arg_list)):
+                if i == 0:
+                    Rectangle.id = arg_list[i]
+                elif i == 1:
+                    self.width = arg_list[i]
+                elif i == 2:
+                    self.height = arg_list[i]
+                elif i == 3:
+                    self.x = arg_list[i]
+                elif i == 4:
+                    self.y = arg_list[i]
