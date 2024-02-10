@@ -143,12 +143,13 @@ class Rectangle(Base):
         rect += str(self.__width) + "/" + str(self.__height)
         return rect
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Assigns an argument to each attribute.
 
         Args:
             *args (int): arguments to assign to attributes in order.
+            **kwargs (int): key-worded arguments to assign to attributes in order.
         """
         arg_list = []
         for arg in args:
@@ -165,3 +166,22 @@ class Rectangle(Base):
                     self.x = arg_list[i]
                 elif i == 4:
                     self.y = arg_list[i]
+
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+
+    def to_dictionary(self):
+        """
+        Returns the dictionary representation of a Rectangle.
+        """
+        return {"x": self.x, "y": self.y, "id": self.id, "height": self.height, "width": self.width}
