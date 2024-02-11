@@ -2,6 +2,7 @@
 """
 Defines a Base class of all other classes in this current project.
 """
+import json
 
 
 class Base:
@@ -24,3 +25,35 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """
+        Returns the JSON string representation of list_dictionaries.
+
+        Args:
+            list_dictionaries (dict): the dict to convert.
+
+        Return:
+            the JSON string representation of list_dictionaries
+        """
+        if list_dictionaries is None or len(list_dictionaries) == 0:
+            return "[]"
+
+        return json.dumps(list_dictionaries)
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        Writes the JSON string representation of list_objs to a file
+
+        Args:
+            list_objs (list): list of objects.
+        """
+        filename = cls.__name__ + ".json"
+        with open(filename, "w", encoding="UTF8") as jsonfile:
+            if list_objs is None:
+                jsonfile.write("[]")
+            else:
+                list_dicts = [o.to_dictionary() for o in list_objs]
+                jsonfile.write(Base.to_json_string(list_dicts))
