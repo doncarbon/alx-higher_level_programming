@@ -32,10 +32,7 @@ class Base:
         Returns the JSON string representation of list_dictionaries.
 
         Args:
-            list_dictionaries (dict): the dict to convert.
-
-        Return:
-            the JSON string representation of list_dictionaries
+            list_dictionaries (list): the dict to convert.
         """
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
@@ -65,9 +62,6 @@ class Base:
 
         Args:
             json_string (str): JSON string representation.
-
-        Return:
-            the list of the JSON string representation json_string.
         """
         if json_string is None or len(json_string) == 0:
             return "[]"
@@ -81,9 +75,6 @@ class Base:
 
         Args:
             dictionary (dict): a double pointer to a dictionary.
-
-        Return:
-            An instance with all attributes already set.
         """
         if dictionary and dictionary != {}:
             if cls.__name__ == "Rectangle":
@@ -92,3 +83,16 @@ class Base:
                 cname = cls(1)
         cname.update(**dictionary)
         return cname
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns a list of instances.
+        """
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as jsonfile:
+                list_dicts = Base.from_json_string(jsonfile.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
