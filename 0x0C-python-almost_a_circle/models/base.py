@@ -57,3 +57,38 @@ class Base:
             else:
                 list_dicts = [o.to_dictionary() for o in list_objs]
                 jsonfile.write(Base.to_json_string(list_dicts))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Returns the list of the JSON string representation json_string.
+
+        Args:
+            json_string (str): JSON string representation.
+
+        Return:
+            the list of the JSON string representation json_string.
+        """
+        if json_string is None or len(json_string) == 0:
+            return "[]"
+
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Returns an instance with all attributes already set.
+
+        Args:
+            dictionary (dict): a double pointer to a dictionary.
+
+        Return:
+            An instance with all attributes already set.
+        """
+        if dictionary and dictionary != {}:
+            if cls.__name__ == "Rectangle":
+                cname = cls(1, 1)
+            else:
+                cname = cls(1)
+        cname.update(**dictionary)
+        return cname
