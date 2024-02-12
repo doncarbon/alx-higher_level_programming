@@ -19,6 +19,11 @@ class Rectangle(Base):
             x (int): x position.
             y (int): y position.
             id (int): the id attribute of a class.
+        Raises:
+            TypeError: If either of width or height is not an int.
+            ValueError: If either of width or height <= 0.
+            TypeError: If either of x or y is not an int.
+            ValueError: If either of x or y < 0.
         """
         super().__init__(id)
 
@@ -57,7 +62,8 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        """setting of a new width.
+        """
+        setting of a new width.
 
         Args:
             value (int): The value of the new width of the rectangle.
@@ -75,7 +81,8 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        """setting of a new height.
+        """
+        setting of a new height.
 
         Args:
             value (int): The value of the new height of the rectangle.
@@ -93,7 +100,8 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
-        """setting of a new x.
+        """
+        setting of a new x.
 
         Args:
             value (int): The value of the new x pos of the rectangle.
@@ -124,12 +132,16 @@ class Rectangle(Base):
 
     def area(self):
         """Return the current area of the rectangle."""
-        return self.__height * self.__width
+        return self.height * self.width
 
     def display(self, *args):
         """
         Prints in stdout the Rectangle instance with the character #.
         """
+        if self.width == 0 or self.height == 0:
+            print("")
+            return
+
         [print() for pos in range(self.__y)]
         for i in range(0, self.__height):
             print(self.__x * " ", end="")
@@ -148,8 +160,13 @@ class Rectangle(Base):
         Assigns an argument to each attribute.
 
         Args:
-            *args (int): arguments to assign to attributes in order.
-            **kwargs (int): key-worded arguments to assign to attributes in order.
+            *args (ints): New attribute values.
+                - 1st argument represents id attribute
+                - 2nd argument represents width attribute
+                - 3rd argument represent height attribute
+                - 4th argument represents x attribute
+                - 5th argument represents y attribute
+            **kwargs (dict): New key/value pairs of attributes.
         """
         arg_list = []
         for arg in args:
@@ -157,7 +174,10 @@ class Rectangle(Base):
         if len(arg_list) != 0:
             for i in range(len(arg_list)):
                 if i == 0:
-                    Rectangle.id = arg_list[i]
+                    if arg_list[i] is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        Rectangle.id = arg_list[i]
                 elif i == 1:
                     self.width = arg_list[i]
                 elif i == 2:
@@ -167,10 +187,13 @@ class Rectangle(Base):
                 elif i == 4:
                     self.y = arg_list[i]
 
-        if kwargs is not None:
+        if kwargs is not None and len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "id":
-                    self.id = value
+                    if value is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = value
                 elif key == "width":
                     self.width = value
                 elif key == "height":
