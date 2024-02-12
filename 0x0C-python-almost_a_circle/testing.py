@@ -5,10 +5,6 @@ from models.rectangle import Rectangle
 from models.square import Square
 
 if __name__ == "__main__":
-    s1 = Square(5, 2, 7, 4)
-    sdictionary1 = s1.to_dictionary()
-
-    s2 = Square(12, 2, 5, 2)
-    sdictionary2 = s2.to_dictionary()
-    slist_dicts = [sdictionary1, sdictionary2]
-    print(len(Base.to_json_string(slist_dicts)))
+    r1 = Rectangle(10, 7, 2, 8)
+    rdictionary1 = r1.to_dictionary()
+    print(len(Base.to_json_string([rdictionary1])))
